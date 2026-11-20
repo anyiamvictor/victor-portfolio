@@ -260,7 +260,7 @@ function CaseStudyPage() {
 
       <header className={styles.caseHero}>
         <div className={`${styles.heroImage} ${project.name === "MealFlow" ? styles.heroImageContain : ""}`}>
-          <img src={project.image} alt={project.imageAlt} />
+          <img src={project.image} alt={project.imageAlt} loading="eager" fetchPriority="high" decoding="async" />
         </div>
         <div className={styles.heroContent}>
           <span className={styles.eyebrow}>{project.type}</span>
@@ -355,6 +355,7 @@ function CaseStudyPage() {
 }
 
 export default CaseStudyPage;
+
 
 
 

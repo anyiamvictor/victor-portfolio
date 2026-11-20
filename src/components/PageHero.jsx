@@ -11,20 +11,6 @@ const heroVariants = {
   },
 };
 
-const portraitVariants = {
-  hidden: {
-    opacity: 0,
-    y: 16,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.65,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
 
 const contentVariants = {
   hidden: {
@@ -76,12 +62,15 @@ function PageHero({
       initial={initialState}
       animate={animationState}
     >
-      <motion.div
-        className={styles.portrait}
-        variants={portraitVariants}
-      >
-        <img src={image} alt={`${title} portrait`} />
-      </motion.div>
+      <div className={styles.portrait}>
+        <img
+          src={image}
+          alt={`${title} portrait`}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
 
       <motion.div
         className={styles.heroContent}
@@ -119,4 +108,6 @@ function PageHero({
 }
 
 export default PageHero;
+
+
 

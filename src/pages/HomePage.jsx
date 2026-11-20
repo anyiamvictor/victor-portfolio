@@ -11,7 +11,7 @@ function HomePage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.portrait}>
-          <img src="/images/victor/vic1.jpg" alt="Victor" />
+          <img src="/images/victor/vic1.jpg" alt="Victor" loading="eager" fetchPriority="high" decoding="async" />
         </div>
 
         <div className={styles.content}>
@@ -116,4 +116,5 @@ function HomePage() {
 }
 
 export default HomePage;
+
 

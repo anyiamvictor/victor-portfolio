@@ -18,16 +18,12 @@ const cardContainerVariants = {
 
 const cardVariants = {
   hidden: {
-    opacity: 0,
-    y: 14,
+    opacity: 1,
+    y: 0,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1],
-    },
   },
 };
 
@@ -60,7 +56,7 @@ const reducedTabPanelVariants = {
   center: { opacity: 1 },
   exit: { opacity: 0 },
 };
-function ProjectCard({ project, reduceMotion }) {
+function ProjectCard({ project, reduceMotion, priority = false }) {
   return (
     <motion.article
       className={styles.projectCard}
@@ -72,7 +68,7 @@ function ProjectCard({ project, reduceMotion }) {
         to={project.href}
         aria-label={`View ${project.name} case study`}
       >
-        <img src={project.image} alt={project.imageAlt} loading="lazy" />
+        <img src={project.image} alt={project.imageAlt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" />
       </Link>
 
       <div className={styles.cardContent}>
@@ -260,11 +256,12 @@ function ProductWorkPage() {
               initial={animationInitial}
               animate="visible"
             >
-              {projects.map((project) => (
+              {projects.map((project, index) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
                   reduceMotion={reduceMotion}
+                  priority={index === 0}
                 />
               ))}
             </motion.div>
@@ -391,5 +388,13 @@ function ProductWorkPage() {
 }
 
 export default ProductWorkPage;
+
+
+
+
+
+
+
+
 
 
