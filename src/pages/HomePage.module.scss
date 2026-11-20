@@ -1,0 +1,507 @@
+﻿@use "../styles/variables" as *;
+
+.page {
+  width: min(100% - 48px, 1120px);
+  min-height: calc(100vh - #{$navigation-height});
+  margin: 0 auto;
+  padding: clamp(28px, 5vh, 56px) 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.5fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 76px);
+}
+
+.portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 410px;
+  display: grid;
+  place-items: center;
+  border-radius: $radius-xl;
+  background: linear-gradient(145deg, $color-primary, $color-primary-light);
+  color: $color-background;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  span {
+    font-family: $font-display;
+    font-size: clamp(4rem, 8vw, 7rem);
+    letter-spacing: -0.08em;
+    opacity: 0.85;
+  }
+}
+
+.content {
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: $color-accent;
+  font-size: 0.7rem;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.13em;
+}
+
+.content h1 {
+  margin: 12px 0 16px;
+  color: $color-primary;
+  font-family: $font-display;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  font-weight: $weight-regular;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+
+  span {
+    display: block;
+  }
+}
+
+.content h2 {
+  max-width: 560px;
+  margin-bottom: 14px;
+  color: $color-text;
+  font-size: clamp(1.15rem, 2.3vw, 1.65rem);
+  font-weight: $weight-medium;
+  line-height: 1.35;
+}
+
+.intro {
+  max-width: 570px;
+  margin-bottom: 18px;
+  color: $color-text-muted;
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+  color: $color-text-muted;
+  font-size: 0.78rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #39966A;
+  box-shadow: 0 0 0 4px rgba(57, 150, 106, 0.12);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid $color-primary;
+  border-radius: $radius-md;
+  font-size: 0.84rem;
+  font-weight: $weight-medium;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.primaryButton {
+  background: $color-primary;
+  color: $color-background;
+
+  &:hover {
+    background: $color-primary-light;
+  }
+}
+
+.secondaryButton {
+  background: transparent;
+  color: $color-primary;
+
+  &:hover {
+    background: rgba($color-primary, 0.06);
+  }
+}
+
+.featured {
+  margin-top: clamp(28px, 5vh, 54px);
+}
+
+.featuredHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: $color-primary;
+
+  h2 {
+    margin: 4px 0 0;
+    font-family: $font-display;
+    font-size: 1.35rem;
+    font-weight: $weight-regular;
+  }
+}
+
+.projectCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 17px 20px;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-surface;
+}
+
+.projectMark {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: $radius-md;
+  background: rgba($color-primary, 0.07);
+  color: $color-primary;
+  font-family: $font-display;
+  font-size: 1.8rem;
+}
+
+.projectInfo {
+  flex: 1;
+  min-width: 0;
+
+  p {
+    margin: 5px 0 0;
+    color: $color-text-muted;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+}
+
+.projectTitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  h3 {
+    margin: 0;
+    color: $color-primary;
+    font-size: 1rem;
+  }
+}
+
+.projectStatus {
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(57, 150, 106, 0.1);
+  color: #347B59;
+  font-size: 0.68rem;
+  font-weight: $weight-medium;
+}
+
+.projectLink {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid $color-border;
+  border-radius: 50%;
+  color: $color-primary;
+  transition: background 180ms ease;
+
+  &:hover {
+    background: rgba($color-primary, 0.07);
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1px solid $color-border;
+  color: $color-text-muted;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 767px) {
+  .page {
+    width: min(100% - 36px, 560px);
+    min-height: auto;
+    padding: 24px 0 20px;
+  }
+
+  .hero {
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+  }
+
+  .portrait {
+    width: 88px;
+    height: 112px;
+    aspect-ratio: auto;
+    border-radius: $radius-md;
+
+    span {
+      font-size: 2.2rem;
+    }
+  }
+
+  .content {
+    min-width: 0;
+  }
+
+  .eyebrow {
+    font-size: 0.59rem;
+    letter-spacing: 0.09em;
+  }
+
+  .content h1 {
+    margin: 7px 0 9px;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    line-height: 1.02;
+  }
+
+  .content h2 {
+    margin-bottom: 8px;
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .intro {
+    grid-column: 1 / -1;
+    margin: 16px 0 12px;
+    font-size: 0.83rem;
+    line-height: 1.6;
+  }
+
+  .availability {
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 0.73rem;
+  }
+
+  .featured {
+    margin-top: 28px;
+  }
+
+  .featuredHeading {
+    h2 {
+      font-size: 1.15rem;
+    }
+  }
+
+  .projectCard {
+    gap: 11px;
+    padding: 13px;
+  }
+
+  .projectMark {
+    width: 42px;
+    height: 42px;
+    font-size: 1.45rem;
+  }
+
+  .projectInfo p {
+    font-size: 0.74rem;
+  }
+
+  .projectTitle {
+    gap: 6px;
+
+    h3 {
+      font-size: 0.9rem;
+    }
+  }
+
+  .projectStatus {
+    font-size: 0.61rem;
+  }
+
+  .projectLink {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 22px;
+    font-size: 0.67rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton,
+  .projectLink {
+    transition: none;
+  }
+}
+
+/* Mobile-only homepage layout refinement */
+@media (max-width: 767px) {
+  .hero {
+    grid-template-columns: 88px minmax(0, 1fr);
+    grid-auto-rows: min-content;
+    align-items: stretch;
+    column-gap: 16px;
+    row-gap: 8px;
+  }
+
+  /* Allow the content elements to participate in the hero grid */
+  .content {
+    display: contents;
+  }
+
+  /* Portrait spans the complete identity block */
+  .hero > .portrait {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 88px;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    align-self: stretch;
+  }
+
+  /* Keep the identity details beside the portrait */
+  .content > .eyebrow,
+  .content > h1,
+  .content > h2 {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  /* Introduction gets the full row below the identity */
+  .content > .intro {
+    grid-column: 1 / -1;
+    margin: 12px 0 4px;
+  }
+
+  .content > .availability {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+  }
+
+  /* Keep both calls to action side by side */
+  .content > .actions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+
+  .actions > a {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+}
+
+/* Refined mobile portrait proportions */
+@media (max-width: 767px) {
+  .hero {
+    grid-template-columns: 124px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .hero > .portrait {
+    width: 124px;
+    min-width: 124px;
+    border-radius: $radius-md;
+  }
+
+  .content > .eyebrow {
+    font-size: 0.54rem;
+    letter-spacing: 0.055em;
+    line-height: 1.35;
+  }
+
+  .content > h1 {
+    font-size: clamp(1.4rem, 5.8vw, 1.75rem);
+    line-height: 1.02;
+    margin: 6px 0 7px;
+  }
+
+  .content > h2 {
+    font-size: 0.86rem;
+    line-height: 1.3;
+  }
+}
+
+/* Responsive copy variants */
+.mobileCopy {
+  display: none;
+}
+
+.desktopCopy {
+  display: inline;
+}
+
+@media (max-width: 767px) {
+  .desktopCopy {
+    display: none;
+  }
+
+  .mobileCopy {
+    display: inline;
+  }
+
+  /* Keep the mobile homepage compact */
+  .footer {
+    display: none;
+  }
+}
+
+/* Mobile top breathing space */
+@media (max-width: 767px) {
+  .page {
+    padding-top: 50px;
+  }
+}
+
+
+

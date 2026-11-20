@@ -1,0 +1,112 @@
+@use "./variables" as *;
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{$color-primary-light};
+
+  --color-background: #{$color-background};
+  --color-surface: #{$color-surface};
+
+  --color-accent: #{$color-accent};
+  --color-accent-light: #{$color-accent-light};
+
+  --color-text: #{$color-text};
+  --color-text-muted: #{$color-text-muted};
+
+  --color-border: #{$color-border};
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: $font-body;
+  font-weight: $weight-regular;
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* Keep page content clear of the fixed mobile navigation */
+@media (max-width: 767px) {
+  .portfolio-content {
+  overflow-x: clip;
+    padding-bottom: calc($mobile-navigation-height + env(safe-area-inset-bottom) + 24px);
+  }
+}

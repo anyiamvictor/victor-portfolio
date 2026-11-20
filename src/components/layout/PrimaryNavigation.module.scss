@@ -1,0 +1,303 @@
+﻿@use "../../styles/variables" as *;
+
+$flow-blue: #315D85;
+$text-highlight: #315D85;
+$inactive-color: #858585;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid $color-border;
+  backdrop-filter: blur(14px);
+}
+
+.headerInner {
+  width: min(100% - 48px, $container-max-width);
+  min-height: $navigation-height;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-6;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  color: $color-primary;
+  font-family: $font-display;
+  font-size: 1.4rem;
+  font-weight: $weight-bold;
+  letter-spacing: 0.045em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  span {
+    color: $color-accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 5px;
+  }
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 76px;
+  min-height: 62px;
+  padding: 7px 10px;
+  color: $inactive-color;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+}
+
+.navIcon {
+  flex-shrink: 0;
+  color: $inactive-color;
+  transition:
+    color 250ms ease,
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.navLabel {
+  position: relative;
+  display: inline-block;
+  color: $inactive-color;
+  font-size: 0.76rem;
+  font-weight: $weight-medium;
+  white-space: nowrap;
+
+  &::after {
+    content: attr(data-label);
+    position: absolute;
+    inset: 0;
+    color: $flow-blue;
+    pointer-events: none;
+    clip-path: inset(100% 0 0 0);
+    opacity: 1;
+  }
+}
+
+/* Active text: blue travels upwards through the letters */
+
+.active {
+  .navLabel {
+    color: $inactive-color;
+
+    &::after {
+      animation: textIllumination 850ms
+        cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+  }
+
+  .navIcon {
+    animation: iconIllumination 900ms
+      cubic-bezier(0.22, 1, 0.36, 1) 350ms both;
+  }
+}
+
+/* Text fill animation */
+
+@keyframes textIllumination {
+  0% {
+    clip-path: inset(100% 0 0 0);
+    opacity: 1;
+  }
+
+  65% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+
+  85% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+/* Icon receives the colour after the text animation */
+
+@keyframes iconIllumination {
+  0% {
+    color: $inactive-color;
+    filter: none;
+  }
+
+  45% {
+    color: $flow-blue;
+    filter: drop-shadow(0 0 5px rgba(49, 93, 133, 0.35));
+  }
+
+  75% {
+    color: $flow-blue;
+    filter: drop-shadow(0 0 7px rgba(49, 93, 133, 0.25));
+  }
+
+  100% {
+    color: $flow-blue;
+    filter: none;
+  }
+}
+
+/* Individual icon character */
+
+.active[data-icon="home"] .navIcon {
+  transform: translateY(-1px);
+}
+
+.active[data-icon="about"] .navIcon {
+  transform: rotate(-6deg);
+}
+
+.active[data-icon="work"] .navIcon {
+  transform: translateY(-2px);
+}
+
+.active[data-icon="experience"] .navIcon {
+  transform: rotate(3deg);
+}
+
+.active[data-icon="expertise"] .navIcon {
+  transform: scale(1.12) rotate(-8deg);
+  filter: drop-shadow(0 0 6px rgba(49, 93, 133, 0.35));
+}
+
+.active[data-icon="contact"] .navIcon {
+  transform: rotate(-5deg);
+}
+
+.mobileNav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .header {
+    position: relative;
+  }
+
+  .headerInner {
+    width: min(100% - 40px, $container-max-width);
+    min-height: 64px;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .mobileNav {
+    position: fixed;
+    z-index: 9999;
+    isolation: isolate;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: center;
+    min-height: calc($mobile-navigation-height + env(safe-area-inset-bottom));
+    padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid $color-border;
+    backdrop-filter: blur(14px);
+  }
+
+  .mobileNav .navLink {
+    min-width: 0;
+    min-height: 54px;
+    gap: 4px;
+    padding: 6px 2px;
+  }
+
+  .mobileNav .navLabel {
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 0.64rem;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .navLabel::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .navIcon {
+    animation: none !important;
+    transition: none;
+  }
+
+  .active .navIcon {
+    color: $flow-blue;
+    filter: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile bottom navigation: fixed height and safe-area support */
+@media (max-width: 767px) {
+  .mobileNav {
+    height: calc($mobile-navigation-height + env(safe-area-inset-bottom));
+    min-height: 0;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+}
+
+
+
+
+/* Hide OVUA brand on mobile; retain navigation */
+@media (max-width: 767px) {
+  .brand {
+    display: none;
+  }
+}
+
+/* Remove the entire desktop header on mobile */
+@media (max-width: 767px) {
+  .header {
+    display: none;
+  }
+}
+
+
+

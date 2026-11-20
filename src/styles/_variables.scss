@@ -1,0 +1,60 @@
+﻿// Brand colours — Navy and White
+$color-primary: #172B45;
+$color-primary-light: #294766;
+
+$color-background: #FFFFFF;
+$color-surface: #F3F6FA;
+
+$color-accent: #315D85;
+$color-accent-light: #A9BED3;
+
+$color-text: #202B38;
+$color-text-muted: #687789;
+
+$color-border: #DCE4EC;
+
+// Typography
+$font-display: Georgia, "Times New Roman", serif;
+$font-body: "Inter", Arial, sans-serif;
+
+// Font weights
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+
+// Spacing scale
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.5rem;
+$space-6: 2rem;
+$space-7: 3rem;
+$space-8: 4rem;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 18px;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1440px;
+
+// Layout
+$container-max-width: 1280px;
+$navigation-height: 76px;
+$mobile-navigation-height: 72px;
+
+// Transitions
+$transition-fast: 180ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;
+
+
+
+

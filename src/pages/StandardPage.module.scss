@@ -1,0 +1,27 @@
+@use "../styles/variables" as *;
+
+.page {
+  width: min(100% - 48px, 1120px);
+  min-height: calc(100vh - #{$navigation-height});
+  margin: 0 auto;
+  padding: clamp(28px, 5vh, 56px) 0 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  margin-top: clamp(32px, 5vh, 52px);
+}
+
+@media (max-width: 767px) {
+  .page {
+    width: min(100% - 36px, 560px);
+    min-height: auto;
+    padding: 32px 0 24px;
+  }
+
+  .content {
+    margin-top: 26px;
+  }
+}

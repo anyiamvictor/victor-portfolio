@@ -1,0 +1,575 @@
+﻿@use "../styles/variables" as *;
+
+.page {
+  width: min(100% - 48px, 1100px);
+  margin: 0 auto;
+  padding: $space-6 0 $space-8;
+}
+
+.intro {
+  max-width: 720px;
+  margin-bottom: $space-5;
+
+  h1 {
+    margin: $space-2 0 $space-3;
+    color: $color-primary;
+    font-family: $font-display;
+    font-size: clamp(2.3rem, 5vw, 3.4rem);
+    font-weight: $weight-regular;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: $color-text-muted;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+.eyebrow {
+  color: $color-accent;
+  font-size: 0.7rem;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.12em;
+}
+
+.mainTabs {
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: $space-5;
+  padding: 4px;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-surface;
+}
+
+.mainTab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 0.85rem;
+  font-weight: $weight-medium;
+  white-space: nowrap;
+  transition: background 180ms ease, color 180ms ease;
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.mainTabActive {
+  background: $color-primary;
+  color: white;
+}
+
+.panelStage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+  position: relative;
+}
+
+.panel {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-4;
+
+  h2 {
+    margin: $space-1 0 0;
+    color: $color-primary;
+    font-family: $font-display;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: $weight-regular;
+  }
+}
+
+.count {
+  color: $color-text-muted;
+  font-size: 0.68rem;
+  font-weight: $weight-semibold;
+  letter-spacing: 0.08em;
+}
+
+.mobileSelector,
+.mobileExperience,
+.mobileCapability {
+  display: none;
+}
+
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: $space-4;
+}
+
+.experienceCard {
+  min-width: 0;
+  padding: $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-surface;
+
+  h3 {
+    margin: $space-3 0 $space-2;
+    color: $color-primary;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: $weight-semibold;
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cardNumber {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(23, 43, 69, 0.06);
+  color: $color-primary;
+  font-size: 0.68rem;
+  font-weight: $weight-semibold;
+}
+
+.period {
+  color: $color-accent;
+  font-size: 0.72rem;
+  font-weight: $weight-semibold;
+}
+
+.role {
+  margin-bottom: $space-3;
+  color: $color-text;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.description {
+  margin-bottom: $space-3;
+  color: $color-text-muted;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  padding-left: 17px;
+  color: $color-text;
+  font-size: 0.78rem;
+  line-height: 1.55;
+
+  li::marker {
+    color: $color-accent;
+  }
+}
+
+.capabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-4;
+}
+
+.capabilityCard {
+  min-width: 0;
+  padding: $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-surface;
+
+  h3 {
+    margin: $space-3 0 $space-2;
+    color: $color-primary;
+    font-size: 1rem;
+    font-weight: $weight-semibold;
+  }
+}
+
+.capabilityIcon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: $radius-md;
+  background: rgba(23, 43, 69, 0.06);
+  color: $color-primary;
+}
+
+.capabilityDescription {
+  margin-bottom: $space-3;
+  color: $color-text-muted;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.skillTag {
+  padding: 5px 8px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: $color-text-muted;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  .page {
+    width: min(100% - 32px, 600px);
+    padding: $space-5 0 $space-6;
+  }
+
+  .intro {
+    margin-bottom: $space-4;
+
+    h1 {
+      font-size: 2.4rem;
+    }
+
+    p {
+      font-size: 0.87rem;
+      line-height: 1.6;
+    }
+  }
+
+  .mainTabs {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    width: 100%;
+    margin-bottom: $space-4;
+  }
+
+  .mainTab {
+    min-width: 0;
+    gap: 6px;
+    padding: 8px 5px;
+    font-size: 0.75rem;
+  }
+
+  .mainTab svg {
+    flex-shrink: 0;
+  }
+
+  .sectionHeading {
+    margin-bottom: $space-3;
+
+    h2 {
+      font-size: 1.45rem;
+    }
+  }
+
+  .count {
+    font-size: 0.62rem;
+  }
+
+  .mobileSelector {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    margin-bottom: $space-3;
+    padding: 2px 1px 7px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .selectorButton {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 6px 12px;
+    border: 1px solid $color-border;
+    border-radius: 20px;
+    background: $color-surface;
+    color: $color-text-muted;
+    font-size: 0.74rem;
+    white-space: nowrap;
+  }
+
+  .selectorActive {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: white;
+  }
+
+  .experienceGrid,
+  .capabilityGrid {
+    display: none;
+  }
+
+  .mobileExperience,
+  .mobileCapability {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+    }
+
+  .mobileExperience > *,
+  .mobileCapability > * {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+
+  .experienceCard,
+  .capabilityCard {
+    padding: $space-4;
+  }
+
+  .experienceCard h3,
+  .capabilityCard h3 {
+    font-size: 0.98rem;
+  }
+
+  .role,
+  .description,
+  .capabilityDescription {
+    font-size: 0.82rem;
+  }
+
+  .highlights {
+    gap: 6px;
+    font-size: 0.77rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .page {
+    width: min(100% - 24px, 600px);
+  }
+
+  .mainTab {
+    font-size: 0.69rem;
+  }
+
+  .mainTab svg {
+    width: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainTab {
+    transition: none;
+  }
+}
+
+/* Expertise page refinements */
+.experienceCard,
+.capabilityCard {
+  height: 100%;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.capabilityCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.capabilityDescription {
+  max-width: 42ch;
+}
+
+.skillList {
+  margin-top: auto;
+  padding-top: $space-3;
+}
+
+.skillTag {
+  background: rgba(23, 43, 69, 0.025);
+}
+
+@media (hover: hover) {
+  .experienceCard:hover,
+  .capabilityCard:hover {
+    border-color: $color-accent;
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 767px) {
+  .experienceCard,
+  .capabilityCard {
+    height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experienceCard,
+  .capabilityCard {
+    transition: none;
+  }
+}
+
+
+/* About-style Expertise hero */
+.page {
+  width: min(100% - 48px, 1120px);
+  min-height: calc(100vh - #{$navigation-height});
+  margin: 0 auto;
+  padding: clamp(28px, 5vh, 56px) 0 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) 1.5fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 76px);
+}
+
+.portrait {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 300px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: $radius-xl;
+  background: linear-gradient(145deg, $color-primary, $color-primary-light);
+  color: white;
+
+  span {
+    font-family: $font-display;
+    font-size: clamp(4rem, 8vw, 6rem);
+    letter-spacing: -0.08em;
+    opacity: 0.85;
+  }
+}
+
+.heroContent {
+  max-width: 650px;
+
+  h1 {
+    margin: 10px 0;
+    color: $color-primary;
+    font-family: $font-display;
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
+    font-weight: $weight-regular;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  h2 {
+    margin-bottom: 12px;
+    color: $color-text;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    font-weight: $weight-medium;
+    line-height: 1.4;
+  }
+
+  p {
+    max-width: 540px;
+    margin-bottom: 0;
+    color: $color-text-muted;
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+}
+
+.heroHeading {
+  min-width: 0;
+}
+
+.mainTabs {
+  margin-top: clamp(32px, 5vh, 52px);
+}
+
+@media (max-width: 767px) {
+  .page {
+    width: min(100% - 36px, 560px);
+    min-height: auto;
+    padding: 32px 0 24px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    align-items: stretch;
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  .portrait {
+    grid-column: 1;
+    grid-row: 1;
+    width: 104px;
+    height: 100%;
+    min-height: 100%;
+    align-self: stretch;
+    aspect-ratio: auto;
+    border-radius: $radius-md;
+
+    span {
+      font-size: 2.3rem;
+    }
+  }
+
+  .heroContent {
+    display: contents;
+  }
+
+  .heroHeading {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+
+    h1 {
+      margin: 5px 0 7px;
+      font-size: clamp(1.7rem, 7vw, 2.1rem);
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+  }
+
+  .heroContent > p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    font-size: 0.77rem;
+    line-height: 1.5;
+  }
+
+  .mainTabs {
+    margin-top: 26px;
+  }
+}
+
